@@ -23,21 +23,21 @@
 <h2>Technologies Used</h2>
 <hr>
 <ul>
-  Backend (book-network)
-Spring Boot 3
-Spring Security 6
-JWT Token Authentication
-Spring Data JPA
-JSR-303 and Spring Validation
-OpenAPI and Swagger UI Documentation
-Docker
-GitHub Actions
-Keycloak
-Frontend (book-network-ui)
-Angular
-Component-Based Architecture
-Lazy Loading
-Authentication Guard
-OpenAPI Generator for Angular
-Bootstrap
+  <h3>Backend (book-network)</h3>
+<li>Spring Boot 3</li>
+<li>Spring Security 6</li>
+<li>JWT Token Authentication</li>
+<li>Spring Data JPA</li>
+<li>JSR-303 and Spring Validation</li>
+<li>OpenAPI and Swagger UI Documentation</li>
+<li>Docker</li>
+<li>GitHub Actions</li>
+<li>Keycloak</li>
+<h3>Frontend (book-network-ui)</h3>
+<li>Angular</li>
+<li>Component-Based Architecture</li>
+<li>Lazy Loading</li>
+<li>Authentication Guard</li>
+<li>OpenAPI Generator for Angular</li>
+<li>Bootstrap</li>
 </ul>
