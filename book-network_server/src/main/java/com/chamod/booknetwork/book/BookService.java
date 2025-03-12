@@ -1,6 +1,7 @@
 package com.chamod.booknetwork.book;
 
 import com.chamod.booknetwork.common.PageResponse;
+import com.chamod.booknetwork.exception.OperationNotPermittedException;
 import com.chamod.booknetwork.history.BookTransactionHistory;
 import com.chamod.booknetwork.history.BookTransactionHistoryRepository;
 import com.chamod.booknetwork.user.User;
@@ -14,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 import static com.chamod.booknetwork.book.BookSpecification.withOwnerId;
 
@@ -112,5 +114,17 @@ public class BookService {
                 allBorrowedBooks.isFirst(),
                 allBorrowedBooks.isLast()
         );
+    }
+
+    public Integer updateShareableStatus(Integer bookId, Authentication connectedUser) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new EntityNotFoundException("No book found with the ID::"+bookId));
+    User user = ((User) connectedUser.getPrincipal());
+    if(!Objects.equals(book.getOwner().getBooks(),user.getId())){
+        throw new OperationNotPermittedException("You cannot update books shareable status");
+    }
+    book.setShareable(!book.isShareable());
+    bookRepository.save(book);
+    return  bookId;
     }
 }
